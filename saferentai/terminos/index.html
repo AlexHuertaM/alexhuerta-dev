@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Términos y Condiciones — SafeRentAI</title>
+  <title>Términos y Condiciones / Terms of Service — SafeRentAI</title>
   <meta name="description" content="Términos y Condiciones de uso de la aplicación SafeRentAI.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../legal.css">
@@ -12,12 +12,12 @@
 <main>
   <header class="doc">
     <a class="brand" href="/">SafeRentAI</a>
-    <h1>Términos y Condiciones</h1>
-    <p class="meta">Última actualización: 2 de noviembre de 2026</p>
     <div class="lang"><a href="#es">Español</a><a href="#en">English</a></div>
   </header>
 
   <section id="es">
+    <h1>Términos y Condiciones</h1>
+    <p class="meta">Última actualización: 2 de noviembre de 2026</p>
     <h2>1. Aceptación</h2>
     <p>Estos términos regulan el uso de la aplicación móvil <strong>SafeRentAI</strong> (la “App”), ofrecida por <strong>Alex Huerta</strong> (“nosotros”). Al crear una cuenta o usar la App aceptas estos términos y nuestro <a href="../privacidad/">Aviso de Privacidad</a>. Si no estás de acuerdo, no uses la App.</p>
 
@@ -65,7 +65,8 @@
   </section>
 
   <section id="en" class="en">
-    <h1 style="font-size:1.6rem">Terms of Service (English)</h1>
+    <h1>Terms of Service</h1>
+    <p class="meta">Last updated: November 2, 2026</p>
 
     <h2>1. Acceptance</h2>
     <p>These terms govern use of the <strong>SafeRentAI</strong> mobile app (the “App”), offered by <strong>Alex Huerta</strong> (“we”). By creating an account or using the App you accept these terms and our <a href="../privacidad/#en">Privacy Notice</a>. If you disagree, do not use the App.</p>
@@ -115,5 +116,21 @@
 
   <footer>© SafeRentAI · <a href="../privacidad/">Aviso de Privacidad / Privacy Notice</a></footer>
 </main>
+<script>
+  // Open in English when the browser is in English, unless a language/section was requested.
+  if (!location.hash && /^en/i.test(navigator.language || '')) location.hash = 'en';
+  function syncLang() {
+    var hash = location.hash.replace(/^#/, '');
+    var en = hash === 'en' || hash === 'delete-account';
+    var root = document.documentElement;
+    root.classList.toggle('lang-en', en);
+    root.lang = en ? 'en' : 'es';
+    var other = document.querySelector('footer a');
+    if (other) other.href = other.getAttribute('href').split('#')[0] + (en ? '#en' : '');
+  }
+  window.addEventListener('hashchange', syncLang);
+  syncLang();
+</script>
+<noscript><style>section.en { display:block; }</style></noscript>
 </body>
 </html>

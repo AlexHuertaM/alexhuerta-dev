@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aviso de Privacidad — SafeRentAI</title>
+  <title>Aviso de Privacidad / Privacy Notice — SafeRentAI</title>
   <meta name="description" content="Aviso de Privacidad de SafeRentAI: qué datos recopila la app, para qué se usan y cómo ejercer tus derechos.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../legal.css">
@@ -12,12 +12,12 @@
 <main>
   <header class="doc">
     <a class="brand" href="/">SafeRentAI</a>
-    <h1>Aviso de Privacidad</h1>
-    <p class="meta">Última actualización: 2 de noviembre de 2026</p>
     <div class="lang"><a href="#es">Español</a><a href="#en">English</a></div>
   </header>
 
   <section id="es">
+    <h1>Aviso de Privacidad</h1>
+    <p class="meta">Última actualización: 2 de noviembre de 2026</p>
     <h2>1. Responsable</h2>
     <p>El responsable del tratamiento de tus datos personales es <strong>Alex Huerta</strong> (en adelante, “el Responsable”), con domicilio en <strong>127 Oriente 1830, int. 33, C.P. 72590, Puebla, Puebla</strong>, México. Contacto para cualquier asunto de privacidad: <a href="mailto:alexhuerta.me@gmail.com">alexhuerta.me@gmail.com</a>.</p>
     <p>Este aviso aplica a la aplicación móvil <strong>SafeRentAI</strong> (la “App”) y se emite conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares.</p>
@@ -74,7 +74,8 @@
   </section>
 
   <section id="en" class="en">
-    <h1 style="font-size:1.6rem">Privacy Notice (English)</h1>
+    <h1>Privacy Notice</h1>
+    <p class="meta">Last updated: November 2, 2026</p>
 
     <h2>1. Data controller</h2>
     <p>The data controller is <strong>Alex Huerta</strong> (“the Controller”), located at <strong>127 Oriente 1830, Int. 33, Postal Code 72590, Puebla, Puebla</strong>, Mexico. Privacy contact: <a href="mailto:alexhuerta.me@gmail.com">alexhuerta.me@gmail.com</a>. This notice applies to the <strong>SafeRentAI</strong> mobile app (the “App”) and is issued under the Mexican Federal Law on Protection of Personal Data Held by Private Parties.</p>
@@ -130,5 +131,21 @@
 
   <footer>© SafeRentAI · <a href="../terminos/">Términos y Condiciones / Terms of Service</a></footer>
 </main>
+<script>
+  // Open in English when the browser is in English, unless a language/section was requested.
+  if (!location.hash && /^en/i.test(navigator.language || '')) location.hash = 'en';
+  function syncLang() {
+    var hash = location.hash.replace(/^#/, '');
+    var en = hash === 'en' || hash === 'delete-account';
+    var root = document.documentElement;
+    root.classList.toggle('lang-en', en);
+    root.lang = en ? 'en' : 'es';
+    var other = document.querySelector('footer a');
+    if (other) other.href = other.getAttribute('href').split('#')[0] + (en ? '#en' : '');
+  }
+  window.addEventListener('hashchange', syncLang);
+  syncLang();
+</script>
+<noscript><style>section.en { display:block; }</style></noscript>
 </body>
 </html>

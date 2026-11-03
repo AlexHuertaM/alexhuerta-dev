@@ -12,6 +12,11 @@ ul { padding-left:1.25rem; }
 .lang { display:flex; gap:.75rem; margin-top:1rem; font-size:.9rem; }
 .lang a { color:var(--green); font-weight:600; text-decoration:none; }
 .note { background:var(--green-bg); border:1px solid #bbf7d0; border-radius:.75rem; padding:.9rem 1.1rem; margin:1.25rem 0; font-size:.95rem; }
-section.en { margin-top:4rem; padding-top:2rem; border-top:2px solid var(--gray-200); }
+/* One language at a time. The class is set by the script on the page; without JavaScript both show. */
+section.en { display:none; }
+html.lang-en #es { display:none; }
+html.lang-en section.en { display:block; }
+.lang a { padding:.15rem .6rem; border-radius:999px; border:1px solid var(--gray-200); }
+html:not(.lang-en) .lang a[href="#es"], html.lang-en .lang a[href="#en"] { background:var(--green-bg); border-color:#bbf7d0; }
 footer { margin-top:3rem; color:var(--gray-600); font-size:.85rem; }
 a { color:#2563eb; }
